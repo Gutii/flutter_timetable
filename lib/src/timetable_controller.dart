@@ -9,6 +9,9 @@ class TimetableController {
     /// The number of day columns to show.
     int initialColumns = 3,
 
+    /// The number of hours rows to show
+    int rowCount = 24,
+
     /// The start date (first column) of the timetable. Default is today.
     DateTime? start,
 
@@ -25,6 +28,7 @@ class TimetableController {
     Function(TimetableControllerEvent)? onEvent,
   }) {
     _columns = initialColumns;
+    _rowCount = rowCount;
     _start = DateUtils.dateOnly(start ?? DateTime.now());
     _cellHeight = cellHeight ?? 50;
     _headerHeight = headerHeight ?? 50;
@@ -43,9 +47,13 @@ class TimetableController {
   }
 
   int _columns = 3;
+  int _rowCount = 24;
 
   /// The current number of [columns] in the timetable.
   int get columns => _columns;
+
+  /// The current number of [columns] in the timetable.
+  int get row => _rowCount;
 
   double _cellHeight = 50.0;
 
